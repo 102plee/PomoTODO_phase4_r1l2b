@@ -26,6 +26,7 @@ public class EditTask extends StackPane {
             fxmlLoader.load();
             EditTaskController controller = fxmlLoader.<EditTaskController>getController();
             controller.setTask(task);
+
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

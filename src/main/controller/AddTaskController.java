@@ -27,6 +27,7 @@ public class AddTaskController {
         try {
             Task task = new Task(description.getText());
             PomoTodoApp.getTasks().add(task);
+
         } catch (RuntimeException e) {
             Logger.log("AddTaskController", "Failed to create a new task from description " + description.getText());
         } finally {

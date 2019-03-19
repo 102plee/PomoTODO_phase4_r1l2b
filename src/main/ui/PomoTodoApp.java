@@ -15,10 +15,12 @@ public class PomoTodoApp extends Application {
     public static final String TITLE = "PomoTODO";
     public static final double WIDTH = 520;
     public static final double HEIGHT = 800;
-    private static List<Task> tasks = new ArrayList<>();
+    private static JsonFileIO jsonfileio;
+    private static List<Task> tasks = jsonfileio.read();
     private static Stage primaryStage;
     
     public static void main(String[] args) {
+        jsonfileio = new JsonFileIO();
         launch(args);
     }
     
