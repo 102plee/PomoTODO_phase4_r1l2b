@@ -39,7 +39,6 @@ public class JsonFileIO {
         jsonifier = new Jsonifier();
         try {
             FileWriter file = new FileWriter(jsonDataFile);
-            System.out.println(jsonifier.taskListToJson(tasks).toString());
             file.write(jsonifier.taskListToJson(tasks).toString());
             file.flush();
         } catch (IOException e) {

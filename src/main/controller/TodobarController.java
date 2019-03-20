@@ -123,11 +123,11 @@ public class TodobarController implements Initializable {
             int selectedIndex = optionPopUpList.getSelectionModel().getSelectedIndex();
             switch (selectedIndex) {
                 case 0:
-                    Logger.log("TodoBarPopUpController", "Setting is not supported in this version");
+                    Logger.log("TodoBarPopUpController", "Editing this task.");
                     PomoTodoApp.setScene(new EditTask(task));
                     break;
                 case 1:
-                    Logger.log("TodoBarPopUpController", "Delet this");
+                    Logger.log("TodoBarPopUpController", "Deleting this task.");
                     PomoTodoApp.getTasks().remove(task);
                     PomoTodoApp.setScene(new ListView(PomoTodoApp.getTasks()));
                     break;
@@ -146,12 +146,6 @@ public class TodobarController implements Initializable {
         private void submit() {
             int selectedIndex = actionPopUpList.getSelectionModel().getSelectedIndex();
             switch (selectedIndex) {
-                case 0:
-                    Logger.log("TodoBarPopUpController", "Setting is not supported in this version");
-                    break;
-                case 1:
-                    Logger.log("TodoBarPopUpController", "Close application");
-                    break;
                 default:
                     Logger.log("TodoBarPopUpController", "No action is implemented for the selected option");
             }
