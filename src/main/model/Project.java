@@ -1,19 +1,15 @@
 package model;
 
-import model.exceptions.EmptyStringException;
 import model.exceptions.NullArgumentException;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 // Represents a Project, a collection of zero or more Tasks
 // Class Invariant: no duplicated task; order of tasks is preserved
-public class Project extends Todo {
+public class Project extends Todo implements Iterable<Todo> {
     private String description;
     private List<Todo> tasks;
-    
+
     // MODIFIES: this
     // EFFECTS: constructs a project with the given description
     //     the constructed project shall have no tasks.
@@ -23,16 +19,18 @@ public class Project extends Todo {
         this.description = description;
         tasks = new ArrayList<>();
     }
-    
+
     // MODIFIES: this
     // EFFECTS: task is added to this project (if it was not already part of it)
     //   throws NullArgumentException when task is null
     public void add(Todo task) {
-        if (!contains(task)) {
-            tasks.add(task);
+        if (!task.equals(this)) {
+            if (!contains(task)) {
+                tasks.add(task);
+            }
         }
     }
-    
+
     // MODIFIES: this
     // EFFECTS: removes task from this project
     //   throws NullArgumentException when task is null
@@ -41,7 +39,7 @@ public class Project extends Todo {
             tasks.remove(task);
         }
     }
-    
+
     // EFFECTS: returns the description of this project
     public String getDescription() {
         return description;
@@ -114,7 +112,7 @@ public class Project extends Todo {
     public boolean isCompleted() {
         return getNumberOfTasks() != 0 && getProgress() == 100;
     }
-    
+
     // EFFECTS: returns true if this project contains the task
     //   throws NullArgumentException when task is null
     public boolean contains(Todo task) {
@@ -123,7 +121,7 @@ public class Project extends Todo {
         }
         return tasks.contains(task);
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -135,9 +133,76 @@ public class Project extends Todo {
         Project project = (Project) o;
         return Objects.equals(description, project.description);
     }
-    
+
     @Override
     public int hashCode() {
         return Objects.hash(description);
+    }
+
+    @Override
+    public Iterator<Todo> iterator() {
+        return new ProjectIterator();
+    }
+
+    private class ProjectIterator implements Iterator<Todo> {
+
+        private final String importantandurgent = "IMPORTANT & URGENT";
+        private final String important = "IMPORTANT";
+        private final String urgent = "URGENT";
+        private final String none = "DEFAULT";
+        private int locallistindex;
+
+        private int listIndex;
+        private int totalSize;
+        private String currentPriority;
+
+        public ProjectIterator() {
+            totalSize = tasks.size();
+            listIndex = 0;
+            currentPriority = importantandurgent;
+            locallistindex = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            if (listIndex == totalSize) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        @Override
+        public Todo next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            int i = 0;
+            for (Todo t : tasks) {
+                if (t.getPriority().toString() == currentPriority) {
+                    if (locallistindex == i) {
+                        locallistindex++;
+                        listIndex++;
+                        return t;
+                    }
+                    i++;
+                }
+            }
+
+            nexthelper();
+            locallistindex = 0;
+            return next();
+        }
+
+        private void nexthelper() {
+            if (currentPriority == importantandurgent) {
+                currentPriority = important;
+            } else if (currentPriority == important) {
+                currentPriority = urgent;
+            } else if (currentPriority == urgent) {
+                currentPriority = none;
+            }
+        }
+
     }
 }
