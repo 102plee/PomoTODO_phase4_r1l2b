@@ -165,7 +165,7 @@ public class Project extends Todo implements Iterable<Todo> {
 
         @Override
         public boolean hasNext() {
-            if (listIndex == totalSize) {
+            if (listIndex >= totalSize) {
                 return false;
             } else {
                 return true;
