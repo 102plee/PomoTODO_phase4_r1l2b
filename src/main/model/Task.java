@@ -1,6 +1,8 @@
 package model;
 
 import model.exceptions.EmptyStringException;
+import model.exceptions.InvalidProgressException;
+import model.exceptions.NegativeInputException;
 import model.exceptions.NullArgumentException;
 import parsers.Parser;
 import parsers.TagParser;
@@ -9,7 +11,8 @@ import parsers.exceptions.ParsingException;
 import java.util.*;
 
 // Represents a Task having a description, status, priorities, set of tags and due date.
-public class Task {
+public class Task extends Todo {
+
     public static final DueDate NO_DUE_DATE = null;
 
     private String description;
@@ -25,9 +28,7 @@ public class Task {
     //    status of 'To Do', and default priority level (i.e., not important nor urgent)
     //  throws EmptyStringException if description is null or empty
     public Task(String description) {
-        if (description == null || description.length() == 0) {
-            throw new EmptyStringException("Cannot construct a task with no description");
-        }
+        super(description);
         this.description = description;
         tags = new HashSet<>();
         dueDate = NO_DUE_DATE;
@@ -110,6 +111,36 @@ public class Task {
     // EFFECTS: returns the description of this task
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public int getEstimatedTimeToComplete() {
+        return etcHours;
+    }
+
+    @Override
+    public int getProgress() {
+        return progress;
+    }
+
+    // MODIFIES: this
+// EFFECTS: sets the progress made towards the completion of this task
+//  throws InvalidProgressException if !(0 <= progress <= 100)
+    public void setProgress(int progress) {
+        if (progress > 100 || progress < 0) {
+            throw new InvalidProgressException();
+        }
+        this.progress = progress;
+    }
+
+    // MODIFIES: this
+// EFFECTS: sets the estimated time to complete this task (in hours of work)
+//  throws NegativeInputException if hours < 0
+    public void setEstimatedTimeToComplete(int hours) {
+        if (hours < 0) {
+            throw new NegativeInputException();
+        }
+        this.etcHours = hours;
     }
 
     // MODIFIES: this
