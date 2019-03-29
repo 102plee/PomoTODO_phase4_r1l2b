@@ -35,6 +35,12 @@ public class TestProject {
         task3.setPriority(new Priority(3));
         task4.setPriority(new Priority(4));
         task5.setPriority(new Priority(1));
+
+        task1.setEstimatedTimeToComplete(1);
+        task2.setEstimatedTimeToComplete(2);
+        task3.setEstimatedTimeToComplete(4);
+        task4.setEstimatedTimeToComplete(13);
+        task5.setEstimatedTimeToComplete(2);
     }
 
     @Test
@@ -96,6 +102,23 @@ public class TestProject {
         } catch (Exception e) {
 
         }
+    }
+
+    @Test
+    void getEstimatedTime() {
+        project.add(task2);
+        project.add(task1);
+        project.add(task4);
+        project.add(task3);
+        project.add(task5);
+        Project projecttest = new Project("afjioew##fioaw");
+        projecttest.add(task1);
+        projecttest.add(task2);
+        projecttest.add(task4);
+        projecttest.add(task5);
+        project.add(projecttest);
+
+        assertEquals(40, project.getEstimatedTimeToComplete());
     }
 
 
