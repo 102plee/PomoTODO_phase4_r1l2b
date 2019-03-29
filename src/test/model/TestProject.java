@@ -79,9 +79,13 @@ public class TestProject {
         project.add(task4);
         project.add(task3);
         project.add(task5);
+        Project projecttest = new Project("afjioew##fioaw");
+        projecttest.setPriority(new Priority(1));
+        project.add(projecttest);
         Iterator<Todo> itr = project.iterator();
         assertEquals(task1, itr.next());
         assertEquals(task5, itr.next());
+        assertEquals(projecttest, itr.next());
         assertEquals(task2, itr.next());
         assertEquals(task3, itr.next());
         assertEquals(task4, itr.next());

@@ -174,10 +174,7 @@ public class Project extends Todo implements Iterable<Todo> {
 
         @Override
         public Todo next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException();
-            }
-            int i = 0;
+            int i = helpertomakenextshorter();
             for (Todo t : tasks) {
                 if (t.getPriority().toString() == currentPriority) {
                     if (locallistindex == i) {
@@ -188,10 +185,21 @@ public class Project extends Todo implements Iterable<Todo> {
                     i++;
                 }
             }
+            if (currentPriority != none) {
+                nexthelper();
+                locallistindex = 0;
+                return next();
+            } else {
+                throw new NoSuchElementException();
+            }
+        }
 
-            nexthelper();
-            locallistindex = 0;
-            return next();
+
+        private int helpertomakenextshorter() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            return 0;
         }
 
         private void nexthelper() {
