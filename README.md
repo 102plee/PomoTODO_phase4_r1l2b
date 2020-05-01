@@ -5,3 +5,5 @@ supplied with the JavaFX library. The GUI structure was supplied by the course i
 was required to be programmed in.
 
 The program saves the TODO list into a JSON file, which it then parses whenever required.
+
+<img src="https://cdn.discordapp.com/attachments/307757628900114434/705633796468244560/unknown.png" title="Main Menu">
