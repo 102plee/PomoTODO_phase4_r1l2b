@@ -1,4 +1,4 @@
-# CPSC 210 Personal Project
+# CPSC 210 Personal Project (Pseudo POMOTDO)
 
 Personal project made for CPSC 210. Features a TODO list that is customizable with a date and description. GUI is available as well, 
 supplied with the JavaFX library. The GUI structure was supplied by the course instructors, with core pieces left out. The main functionality
