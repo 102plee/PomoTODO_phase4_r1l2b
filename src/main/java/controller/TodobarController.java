@@ -24,11 +24,6 @@ import java.util.ResourceBundle;
 
 // Controller class for Todobar UI
 public class TodobarController implements Initializable {
-    private static final String todoOptionsPopUpFXML = "resources/fxml/TodoOptionsPopUp.fxml";
-    private static final String todoActionsPopUpFXML = "resources/fxml/TodoActionsPopUp.fxml";
-    private File todobarPopUpFxmlFile = new File(todoOptionsPopUpFXML);
-    private File todobarActionsPopUpFxmlFile = new File(todoActionsPopUpFXML);
-
     @FXML
     private Label descriptionLabel;
     @FXML
@@ -65,7 +60,8 @@ public class TodobarController implements Initializable {
     // EFFECTS: load options pop up (setting, exit)
     private void loadTodobarPopUp() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(todobarPopUpFxmlFile.toURI().toURL());
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/TodoOptionsPopUp.fxml"));
             fxmlLoader.setController(new TodoBarPopUpController());
             todobarPopUp = new JFXPopup(fxmlLoader.load());
         } catch (IOException exception) {
@@ -75,7 +71,8 @@ public class TodobarController implements Initializable {
 
     private void loadTodobarActionsPopUp() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(todobarActionsPopUpFxmlFile.toURI().toURL());
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/TodoActionsPopUp.fxml"));
             fxmlLoader.setController(new TodoBarActionsPopUpController());
             viewPopUp = new JFXPopup(fxmlLoader.load());
         } catch (IOException exception) {

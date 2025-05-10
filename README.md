@@ -6,4 +6,6 @@ The GUI structure was supplied by the course instructors, with core pieces left 
 
 The program saves the TODO list into a JSON file, which it then parses whenever required.
 
-![Console snapshot](/images/console_snapshot.png)
+| Graphical UI                                     | Terminal UI                                          |
+|--------------------------------------------------|------------------------------------------------------|
+| <img src="images/gui_snapshot.png" height="500"> | <img src="images/console_snapshot.png" height="500"> |
