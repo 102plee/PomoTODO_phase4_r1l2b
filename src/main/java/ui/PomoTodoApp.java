@@ -11,15 +11,13 @@ import java.util.List;
 
 // The PomoTODO GUI Application
 public class PomoTodoApp extends Application {
-    public static final String TITLE = "PomoTODO";
+    public static final String TITLE = "Taskat";
     public static final double WIDTH = 520;
     public static final double HEIGHT = 800;
-    private static JsonFileIO jsonfileio;
-    private static List<Task> tasks = jsonfileio.read();
+    private static List<Task> tasks = JsonFileIO.read();
     private static Stage primaryStage;
 
     public static void main(String[] args) {
-        jsonfileio = new JsonFileIO();
         launch(args);
     }
 

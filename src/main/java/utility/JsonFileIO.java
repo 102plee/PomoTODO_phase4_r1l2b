@@ -51,9 +51,9 @@ public class JsonFileIO {
         String osName = System.getProperty("os.name").toLowerCase();
         String homeDir = System.getProperty("user.home");
         if (osName.contains("win")) {
-            return Paths.get(homeDir, "Library", "Application Support", "taskat", "tasks.json");
-        } else if (osName.contains("mac")) {
             return Paths.get(homeDir, "AppData", "Local", "taskat", "tasks.json");
+        } else if (osName.contains("mac")) {
+            return Paths.get(homeDir, "Library", "Application Support", "taskat", "tasks.json");
         } else {
             return Paths.get(homeDir, ".local", "share", "taskat", "tasks.json");
         }
