@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Phase4Obf">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/Phase4Obf.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
