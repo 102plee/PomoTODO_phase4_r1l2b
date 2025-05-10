@@ -18,5 +18,5 @@ It features both a command-line interface and a JavaFX-powered graphical user in
 ## Getting started
 
 Install the [latest release of tasket](https://github.com/joeyshi12/taskat/releases).
-Running the jar by double-clicking or executing `java -jar taskat.jar` will bring up the graphical user interface.
+Start the GUI application by double-clicking the jar file or executing `java -jar taskat.jar` in the terminal.
 To use the command-line interface, execute `java -cp taskat.jar ConsoleToDoApp`.
