@@ -5,7 +5,7 @@ It features both a command-line interface and a JavaFX-powered graphical user in
 
 | Terminal UI                                          | Graphical UI                                     |
 |------------------------------------------------------|--------------------------------------------------|
-| <img src="images/console_snapshot.png" height="500"> | <img src="images/gui_snapshot.png" height="500"> |
+| <img src="images/console_snapshot.png" height="400"> | <img src="images/gui_snapshot.png" height="400"> |
 
 ## Key features
 
